@@ -1,0 +1,472 @@
+{
+  "version": "2.2.0",
+  "summary": {
+    "title": "Dragon_DFD",
+    "owner": "",
+    "description": "",
+    "id": 0
+  },
+  "detail": {
+    "contributors": [],
+    "diagrams": [
+      {
+        "id": 0,
+        "title": "ScratchWorld",
+        "diagramType": "STRIDE",
+        "placeholder": "New STRIDE diagram description",
+        "thumbnail": "./public/content/images/thumbnail.stride.jpg",
+        "version": "2.2.0",
+        "cells": [
+          {
+            "position": {
+              "x": 2240,
+              "y": 290
+            },
+            "size": {
+              "width": 130,
+              "height": 60
+            },
+            "attrs": {
+              "text": {
+                "text": "PosgreSQL Database"
+              },
+              "topLine": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "strokeDasharray": null
+              },
+              "bottomLine": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "store",
+            "zIndex": 1,
+            "id": "6482a845-6a98-43cb-8eee-218fa92ddefe",
+            "data": {
+              "type": "tm.Store",
+              "name": "PosgreSQL Database",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isALog": false,
+              "isEncrypted": false,
+              "isSigned": false,
+              "storesCredentials": false,
+              "storesInventory": false,
+              "threats": [
+                {
+                  "id": "7dc8e448-9985-4972-854c-53f80e661953",
+                  "title": "Зловмисник може змінити слабко зашифрований або хешований вміст",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Information disclosure",
+                  "description": "Зловмисник може змінити слабко зашифрований або хешований вміст",
+                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 2,
+                  "score": ""
+                },
+                {
+                  "id": "5b70a918-d416-4848-a609-0470cc055852",
+                  "title": "Зловмисник може скрити зловмисну ​​дію та видалити сліди атаки, що призводить до проблем із відмовою",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Repudiation",
+                  "description": "Правильна реєстрація всіх подій безпеки та дій користувача створює можливість відстеження в системі та усуває будь-які можливі проблеми відмови. За відсутності належного контролю аудиту та журналювання неможливо було б запровадити будь-яку підзвітність у системі",
+                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 3,
+                  "score": ""
+                },
+                {
+                  "id": "c035f4b3-a591-4bf4-b869-6ce1e7dc7233",
+                  "title": "Зловмисник може отримати доступ до конфіденційних даних, виконавши впровадження SQL через веб-додаток",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Tampering",
+                  "description": "SQL-ін’єкція – це атака, під час якої шкідливий код вставляється в рядки, які згодом передаються екземпляру SQL Server для аналізу та виконання. Основна форма SQL-ін’єкції полягає в прямому вставленні коду в змінні, що вводяться користувачем, які об’єднуються з командами SQL і виконуються. Менш пряма атака впроваджує шкідливий код у рядки, які призначені для зберігання в таблиці або як метадані. Коли збережені рядки згодом об’єднуються в динамічну команду SQL, виконується шкідливий код",
+                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 10,
+                  "score": ""
+                },
+                {
+                  "id": "8be1787c-2455-44bf-9640-63fe8a7f43aa",
+                  "title": "Зловмисник може використати відсутність систем моніторингу та викликати аномальний трафік до бази даних",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Tampering",
+                  "description": "Зловмисник може використати відсутність виявлення вторгнень і запобігання аномальній діяльності бази даних і викликати аномальний трафік до бази даних",
+                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 15,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "tampering": 2,
+                "repudiation": 2,
+                "informationDisclosure": 2,
+                "denialOfService": 0
+              }
+            }
+          },
+          {
+            "position": {
+              "x": 1980,
+              "y": 270
+            },
+            "size": {
+              "width": 60,
+              "height": 60
+            },
+            "attrs": {
+              "text": {
+                "text": "Web Application"
+              },
+              "body": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "zIndex": 2,
+            "id": "6134db24-5f3d-489b-a054-192940099933",
+            "data": {
+              "type": "tm.Process",
+              "name": "Web Application",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "handlesCardPayment": false,
+              "handlesGoodsOrServices": false,
+              "isWebApplication": false,
+              "privilegeLevel": "",
+              "threats": [
+                {
+                  "id": "5533303b-0eea-4b07-8fc4-326e7d140c20",
+                  "title": "Зловмисник може отримати несанкціонований доступ до бази даних через відсутність захисту доступу до мережі",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Elevation of privilege",
+                  "description": "Якщо на рівні мережі чи брандмауера хоста немає обмежень для доступу до бази даних, будь-хто може спробувати підключитися до бази даних із неавторизованого місця",
+                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 5,
+                  "score": ""
+                },
+                {
+                  "id": "12ccbca3-4c41-429c-88ae-5f9bf81744ce",
+                  "title": "Зловмисник може обійти критичні кроки або виконати дії від імені інших користувачів (жертв) через неправильну логіку перевірки",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Elevation of privilege",
+                  "description": "Неможливість обмежити привілеї та права доступу до програми для осіб, яким потрібні привілеї чи права доступу, може призвести до несанкціонованого використання даних через неправильні налаштування прав і перевірку",
+                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 7,
+                  "score": ""
+                },
+                {
+                  "id": "6ff2dfc9-dedc-4eca-9fff-7d144cd6d913",
+                  "title": "Зловмисник може підробити цільову веб-програму через незахищену конфігурацію сертифіката TLS",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Spoofing",
+                  "description": "Переконайтеся, що параметри сертифіката TLS налаштовані з правильними значеннями",
+                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 12,
+                  "score": ""
+                },
+                {
+                  "id": "07c353af-7cd4-48f2-aa1c-5ea4f1383302",
+                  "title": "Зловмисник викрадає повідомлення з мережі та відтворює їх, щоб викрасти сеанс користувача",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Tampering",
+                  "description": "Зловмисник викрадає повідомлення з мережі та відтворює їх, щоб викрасти сеанс користувача",
+                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 13,
+                  "score": ""
+                },
+                {
+                  "id": "ba5766be-74f8-4362-b4bd-219456a7d6c2",
+                  "title": "Зловмисник може виконувати дії від імені іншого користувача через відсутність засобів контролю міждоменних запитів",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Denial of service",
+                  "description": "Неможливість обмежити запити, що надходять із доменів третіх сторін, може призвести до несанкціонованих дій або доступу до даних",
+                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 17,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 2,
+                "tampering": 1,
+                "repudiation": 0,
+                "informationDisclosure": 0,
+                "denialOfService": 1,
+                "elevationOfPrivilege": 3
+              }
+            }
+          },
+          {
+            "position": {
+              "x": 1730,
+              "y": 290
+            },
+            "size": {
+              "width": 112.5,
+              "height": 60
+            },
+            "attrs": {
+              "text": {
+                "text": "Browser"
+              },
+              "body": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "actor",
+            "zIndex": 3,
+            "id": "d24ea904-5af9-480d-8bd0-1c0e1bdeb26e",
+            "data": {
+              "type": "tm.Actor",
+              "name": "Browser",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "providesAuthentication": false,
+              "threats": [
+                {
+                  "id": "9fef41bb-7022-4b05-ae04-d4b6d9ad1154",
+                  "title": "Зловмисник може отримати доступ до конфіденційної інформації через повідомлення про помилки",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Spoofing",
+                  "description": "Зловмисник може отримати доступ до таких конфіденційних даних, як наведені нижче, через докладні повідомлення про помилки - імена серверів - рядки підключення - імена користувачів - паролі - процедури SQL - подробиці динамічних помилок SQL - трасування стека та рядки коду - змінні, що зберігаються в пам'яті - диск і розташування папок - Точки встановлення програми - Параметри конфігурації хоста - Інші внутрішні деталі програми",
+                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 6,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 1,
+                "repudiation": 0
+              }
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Data Flow",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": []
+            },
+            "id": "526f42c4-3fe7-4e3d-ad02-4f4a72a334e0",
+            "source": {
+              "cell": "d24ea904-5af9-480d-8bd0-1c0e1bdeb26e"
+            },
+            "target": {
+              "cell": "6134db24-5f3d-489b-a054-192940099933"
+            },
+            "vertices": [
+              {
+                "x": 1890,
+                "y": 270
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Data Flow",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": []
+            },
+            "id": "7fac35ed-a422-4fb6-b173-ae5c91153823",
+            "source": {
+              "cell": "6134db24-5f3d-489b-a054-192940099933"
+            },
+            "target": {
+              "cell": "6482a845-6a98-43cb-8eee-218fa92ddefe"
+            },
+            "vertices": [
+              {
+                "x": 2140,
+                "y": 250
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Data Flow",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": []
+            },
+            "id": "35b54447-6104-4af1-b79b-c54723b188df",
+            "source": {
+              "cell": "6134db24-5f3d-489b-a054-192940099933"
+            },
+            "target": {
+              "cell": "d24ea904-5af9-480d-8bd0-1c0e1bdeb26e"
+            },
+            "vertices": [
+              {
+                "x": 1920,
+                "y": 410
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Data Flow",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": []
+            },
+            "id": "e6745d20-0d15-45e0-a88a-aa71e954d916",
+            "source": {
+              "cell": "6482a845-6a98-43cb-8eee-218fa92ddefe"
+            },
+            "target": {
+              "cell": "6134db24-5f3d-489b-a054-192940099933"
+            },
+            "vertices": [
+              {
+                "x": 2160,
+                "y": 390
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "diagramTop": 1,
+    "reviewer": "",
+    "threatTop": 17
+  }
+}
