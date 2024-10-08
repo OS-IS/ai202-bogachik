@@ -1,0 +1,43 @@
+@startuml
+title UML-діаграма розгортання ПП
+
+left to right direction
+
+skinparam componentStyle uml1
+
+node "<<Настільний комп'ютер>>" as dk {
+       node "<<OC Windows>>"{
+           node "<<Веб-навігатор>>"{
+              component [*.html]
+           }
+       }
+}
+
+interface Keyboard
+
+interface Mouse
+
+Keyboard -- dk
+
+Mouse -- dk
+
+node "<<Сервер 1>>" as serv1 {
+	node "<<OC Windows>>" as l1 {
+	    node "<<Visual Studio 2022>>" {
+		    component [*.cs]
+		}
+	}
+}
+
+dk -- serv1
+
+node "<<Сервер 2>>" as serv2 {
+	node "<<OC Windows>>" as l2 {
+	    node "<<Database Server PosgreSQL>>" {
+		    database "Relation Database"
+		}
+	}
+}
+
+serv1 -- serv2
+@enduml
