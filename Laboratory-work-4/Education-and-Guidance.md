@@ -17,6 +17,9 @@
 
 ## Огляд діяльностей
 
+|Maturity level 1 Offer staff access to resources around the topics of secure development and deployment.|
+|Provide security awareness training for all personnel involved in software development.|Identify a “Security Champion” within each development team.|
+
 ### Потік A - Навчання та підвищення обізнаності
 **Рівень зрілості 1** 
 
