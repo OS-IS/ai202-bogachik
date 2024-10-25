@@ -43,7 +43,7 @@ SWF-файли мають можливість навігації в брауз�
 З травня 2007 року компанія Adobe випустила три нові версії Flash Player. Кожна нова версія обмежує деякі атаки, описані раніше.
 
 | Версія плеєра | як функція | Зовнішній інтерфейс | GetURL | HTML Ін'єкція |
-|:---:|:---:|:---:|:---:|
+|:---:|:---:|:---:|:---:|:---:|
 | v9.0 r47/48 | Так | Так | Так | Так |
 | v9.0 r115 | Ні | Так | Так | Так |
 | v9.0 r124 | Ні | Так | Так | Частково |
@@ -107,26 +107,48 @@ FlashVars також можна ініціалізувати з URL:
 > movieClip 328 __Packages.Locale {
 > 
 > #initclip
->     if (!_global.Locale) {'
+> 
+>     if (!_global.Locale) {
+> 
 >     var v1 = function (on_load) {
+> 
 >         var v5 = new XML();
+> 
 >         var v6 = this;
+> 
 >         v5.onLoad = function (success) {
+> 
 >         if (success) {
+> 
 >             trace('Locale loaded xml');
+> 
 >             var v3 = this.xliff.file.body.$trans_unit;
+> 
 >             var v2 = 0;
+> 
 >             while (v2 < v3.length) {
+> 
 >             Locale.strings[v3[v2]._resname] = v3[v2].source.__text;
+> 
 >             ++v2;
+> 
 >             }
+> 
 >             on_load();
+> 
 >         } else {}
+> 
 >         };
+> 
 >         if (_root.language != undefined) {
+> 
 >         Locale.DEFAULT_LANG = _root.language;
+> 
 >         }
+> 
 >         v5.load(Locale.DEFAULT_LANG + '/player_' +
+> 
 >                             Locale.DEFAULT_LANG + '.xml');
+> 
 >     };
 
