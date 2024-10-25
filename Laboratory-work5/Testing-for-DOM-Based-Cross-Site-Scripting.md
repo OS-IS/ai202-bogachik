@@ -55,13 +55,13 @@ DOM, або [об’єктна модель документа](https://en.wikip
 
 Автоматизоване тестування має дуже обмежений успіх у ідентифікації та перевірці XSS на основі DOM, оскільки воно зазвичай ідентифікує XSS, надсилаючи певне корисне навантаження та намагаючись спостерігати його у відповіді сервера. Це може добре працювати для простого прикладу, наведеного нижче, де параметр повідомлення відображається назад до користувача:
 
-> `<script>`
+> `<script>
 > 
-> `var pos=document.URL.indexOf("message=")+5;`
+`var pos=document.URL.indexOf("message=")+5;
 > 
-> `document.write(document.URL.substring(pos,document.URL.length));`
+> document.write(document.URL.substring(pos,document.URL.length));
 > 
-> `</script>`
+> </script>`
 
 Однак його можна не виявити в наступному надуманому випадку:
 
