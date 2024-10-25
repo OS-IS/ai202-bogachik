@@ -45,9 +45,9 @@ DOM, або [об’єктна модель документа](https://en.wikip
 
 Ось два приклади введення з клієнтських об’єктів JavaScript:
 
-> `var data = window.location;`
+> var data = window.location;
 >
-> `var result = someFunction(window.referrer);`
+> var result = someFunction(window.referrer);
 
 Незважаючи на те, що код JavaScript не має великої різниці в тому, як вони витягуються, важливо зазначити, що коли вхідні дані надходять через сервер, сервер може застосувати будь-які зміни до даних, які йому потрібні. З іншого боку, перестановки, які виконуються об’єктами JavaScript, досить добре зрозумілі та задокументовані. Якби `someFunction` у наведеному вище прикладі була приймачем, тоді можливість використання в першому випадку залежала б від фільтрації, виконаної сервером, тоді як в останньому випадку це залежало б від кодування, виконаного браузером для об’єкта `window.referrer`. Стефано Ді Пауло написав чудову статтю про те, що повертають браузери, коли запитують різні елементи [URL-адреси за допомогою атрибутів документа та розташування](https://github.com/wisec/domxsswiki/wiki/location,-documentURI-and-URL-sources).
 
@@ -55,33 +55,33 @@ DOM, або [об’єктна модель документа](https://en.wikip
 
 Автоматизоване тестування має дуже обмежений успіх у ідентифікації та перевірці XSS на основі DOM, оскільки воно зазвичай ідентифікує XSS, надсилаючи певне корисне навантаження та намагаючись спостерігати його у відповіді сервера. Це може добре працювати для простого прикладу, наведеного нижче, де параметр повідомлення відображається назад до користувача:
 
-> <script>
+> `<script>`
 > 
-> var pos=document.URL.indexOf("message=")+5;
+> `var pos=document.URL.indexOf("message=")+5;`
 > 
 > `document.write(document.URL.substring(pos,document.URL.length));`
 > 
-> </script>
+> `</script>`
 
 Однак його можна не виявити в наступному надуманому випадку:
 
-> <script>
+> `<script>`
 > 
-> var navAgt = navigator.userAgent;
+> `var navAgt = navigator.userAgent;`
 > 
-> if (navAgt.indexOf("MSIE")!=-1) {
+> `if (navAgt.indexOf("MSIE")!=-1) {`
 > 
->         document.write("You are using IE as a browser and visiting site: " + document.location.href + ".");
+> `        document.write("You are using IE as a browser and visiting site: " + document.location.href + ".");`
 > 
 > }
 > 
-> else {
+> `else {`
 > 
->     document.write("You are using an unknown browser.");
+> `    document.write("You are using an unknown browser.");`
 > 
 > `}`
 > 
-> </script>
+> `</script>`
 
 ## Заходи запобігання
 Щоб дізнатися про заходи щодо запобігання XSS на основі DOM, див. [DOM-based XSS Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/DOM_based_XSS_Prevention_Cheat_Sheet.html).
