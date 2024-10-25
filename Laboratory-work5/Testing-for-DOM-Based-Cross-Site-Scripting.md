@@ -73,7 +73,7 @@ DOM, або [об’єктна модель документа](https://en.wikip
 > 
 > `        document.write("You are using IE as a browser and visiting site: " + document.location.href + ".");`
 > 
-> }
+> `}`
 > 
 > `else {`
 > 
