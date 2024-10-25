@@ -18,6 +18,4 @@ DOM, або об’єктна модель документа, — це стру
 
 У цьому гіпотетичному прикладі використовується наступний клієнтський код:
 
-> `<script>
-> document.write("Site is at: " + document.location.href + ".");
-> </script>`
+> <script> document.write("Site is at: " + document.location.href + "."); </script>
