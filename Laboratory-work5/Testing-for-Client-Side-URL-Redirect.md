@@ -14,7 +14,7 @@
 
 Ось приклад URL-адреси фішингової атаки.
 
-> http://www.target.site?#redirect=www.fake-target.site
+> `http://www.target.site?#redirect=www.fake-target.site`
 
 Жертва, яка відвідує цю URL-адресу, буде автоматично перенаправлена ​​на сайт `fake-target.site`, де зловмисник може розмістити підроблену сторінку, схожу на запланований сайт, щоб викрасти облікові дані жертви.
 
@@ -55,6 +55,6 @@
 
 Це можна використати, надіславши такий рядок запиту:
 
-> http://www.victim.site/?#javascript:alert(document.cookie)
+> `http://www.victim.site/?#javascript:alert(document.cookie)`
 
 Під час перевірки цієї вразливості враховуйте, що деякі символи обробляються різними браузерами по-різному. Для довідки перегляньте [XSS на основі DOM](https://owasp.org/www-community/attacks/DOM_Based_XSS).
