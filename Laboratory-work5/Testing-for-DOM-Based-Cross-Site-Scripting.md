@@ -69,17 +69,13 @@ DOM, або [об’єктна модель документа](https://en.wikip
 > 
 > `var navAgt = navigator.userAgent;`
 > 
-> `if (navAgt.indexOf("MSIE")!=-1)`
->
-> `{`
+> `if (navAgt.indexOf("MSIE")!=-1) {`
 > 
 > `        document.write("You are using IE as a browser and visiting site: " + document.location.href + ".");`
 > 
 > `}`
 > 
-> `else`
-> 
-> `{`
+> `else {`
 > 
 > `    document.write("You are using an unknown browser.");`
 > 
