@@ -63,7 +63,7 @@
 
 21
 
-![image](https://github.com/user-attachments/assets/75b249b3-7ed1-4085-81d6-bfda41182884)
+![image](https://github.com/user-attachments/assets/434c2037-c89c-4b64-ad6d-1a981986fba9)
 
 22
 
